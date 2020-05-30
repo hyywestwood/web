@@ -1,0 +1,101 @@
+{% load staticfiles %}
+<!-- Footer -->
+<nav class="navbar navbar-dark bg-dark mb-0" id="nav-footer">
+    <div class="row col justify-content-center">
+        <h3 class="mr-3">
+            <a href="mailto:3140105713@zju.edu.cn" class="hvr-icon-grow no-underline">
+                <i class="fas fa-envelope hvr-icon" style="color: lightskyblue;" id="layer_email"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="https://github.com/hyywestwood" style="color: #f0c674;" target="_blank"
+               class="hvr-icon-grow no-underline">
+                <i class="fab fa-github hvr-icon" id="layer_github"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="//weibo.com/hyywestwood" style="color: indianred;" target="_blank"
+               class="hvr-icon-grow no-underline">
+                <i class="fab fa-weibo hvr-icon" id="layer_weibo"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="#" style="color: yellowgreen;" class="hvr-icon-grow no-underline">
+                <i class="fab fa-weixin hvr-icon" id="footer_wechart"></i>
+            </a>
+        </h3>
+        <h3>
+            <a href="#" style="color: lightskyblue;" class="hvr-icon-grow no-underline">
+                <i class="fab fa-qq hvr-icon" id="footer_qq"></i>
+            </a>
+        </h3>
+    </div>
+
+    <div class="row col-12 justify-content-center">
+        <div style="text-align: center; color: lightgrey;">
+            <p class="mb-0">CopyRight &copy; 2020 hyywestwood</p>
+            <p class="mb-0">Powered by
+                <a href="https://www.djangoproject.com/" target="_blank">
+                    Django
+                </a> &
+                <a target="_blank" href="https://getbootstrap.com/">
+                    Bootstrap
+                </a>
+                <span class="mb-0">&nbsp;1554148540@qq.com</span>
+            </p>
+        </div>
+    </div>
+</nav>
+
+{% block script %}
+<script>
+    $('#layer_email').on('mouseenter', function () {
+        this.index = layer.tips('给博主发邮件', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'lightskyblue']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_weibo').on('mouseenter', function () {
+        this.index = layer.tips('关注博主微博', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'indianred']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_github').on('mouseenter', function () {
+        this.index = layer.tips('在GitHub查看博主代码', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, '#f0c674']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#footer_wechart').on('mouseenter', function () {
+        this.index = layer.tips('<img src="/media/pic/wechart_qr.jpg" alt="logo" style=\'width:120px;height:120px;\'>','#footer_wechart',{
+            tips: [1, '#3595CC'],
+            time:-1
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#footer_qq').on('mouseenter', function () {
+        this.index = layer.tips('<img src="/media/pic/qq_qrcode.jpg" alt="" style=\'width:120px;height:160px;\'>','#footer_qq',{
+            tips: [1, '#3595CC'],
+            time:-1
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+</script>
+<script src="{% static 'live2d-widget-master/autoload.js'%}"></script>
+{% endblock script %}

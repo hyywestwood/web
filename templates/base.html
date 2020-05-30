@@ -1,0 +1,167 @@
+<!-- 载入静态文件 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="utf-8">
+    <!-- 网站标题 -->
+    <title>{% block title %}{% endblock %}</title>
+    <!-- 引入bootstrap的css文件 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- 引入monikai.css -->
+    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous"
+    >
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.3.0/video-js.min.css" rel="stylesheet">-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.3.0/video.min.js"></script>-->
+    <script type="text/javascript" src="/static/ckplayer/ckplayer.js"></script>
+    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+    <script src="{% static 'jquery/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'popper/popper-1.14.4.js' %}"></script>
+    <!-- 引入bootstrap的js文件 -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- 引入layer.js -->
+    <script src="{% static 'layer/layer.js' %}"></script>
+</head>
+
+<body style='background-image: url("https://www.jhxblog.cn/static/images/my_images/blog_bg.jpg");background-repeat:no-repeat; background-attachment: fixed;'>
+<!--/*&lt;!&ndash; 引入导航栏 &ndash;&gt;*/-->
+{% include 'header.html' %}
+<!-- 预留具体页面的位置 -->
+<div id="wrapper">
+    <div class="container mydiv">
+        <script src="https://cdn.jsdelivr.net/npm/mo-js@0.288.2/build/mo.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.min.js"></script>
+        <script src="{% static 'fireworks.js' %}"></script>
+        {% block content %}{% endblock content %}
+        <div id="push"></div>
+        <!--    <div id="landlord">-->
+        <!--        <div class="message" style="opacity:0"></div>-->
+        <!--        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>-->
+        <!--        <div class="hide-button">隐藏</div>-->
+        <!--    </div>-->
+    </div>
+</div>
+
+<!--<script type="text/javascript" color="208,55,66" opacity="0.7" count="99" src="{% static 'canvas-nest.js' %}"></script>-->
+
+<!--&lt;!&ndash;引入css文件&ndash;&gt;-->
+<!--<link rel="stylesheet" href="{%static 'live2d/css/live2d.css'%}"/>-->
+<!--&lt;!&ndash;引入js文件&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="{%static 'live2d/js/jquery-2.2.0.min.js'%}"></script>&ndash;&gt;-->
+<!--<script type="text/javascript">-->
+<!--    var message_Path = "{%static 'live2d/message.json'%}";-->
+<!--    var home_Path = 'http://127.0.0.1:8000/'        //此处可以修改为你的域名，必须带斜杠-->
+<!--</script>-->
+<!--<script type="text/javascript" src="{%static 'live2d/js/live2d.js'%}"></script>-->
+<!--<script type="text/javascript" src="{%static 'live2d/js/message.js'%}"></script>-->
+<!--<script type="text/javascript">-->
+<!--    loadlive2d("live2d", "{%static 'live2d/model/tia/model.json'%}");-->
+<!--</script>-->
+
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
+
+{% block script %}{% endblock script %}
+
+{% include 'back_to_top_func.html' %}
+
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    #wrapper {
+        min-height: 100%;
+        margin-bottom: -40px;
+    }
+
+    .breadcrumb > li + li:before {
+        color: #CCCCCC;
+        content: "/ ";
+        padding: 0 5px;
+    }
+
+    #footer,
+    #push {
+        height: 60px;
+    }
+
+    .mydiv {
+        width: 100%;
+        height: auto;
+        border: #909090 0px solid;
+        background: rgba(255, 255, 255, 0.5);
+        color: #333;
+        filter: progid:DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=3); /*ie*/
+        -moz-box-shadow: 2px 2px 10px #909090; /*firefox*/
+        -webkit-box-shadow: 2px 2px 10px #909090; /*safari或chrome*/
+        box-shadow: 2px 2px 10px #909090; /*opera或ie9*/
+    }
+
+    .zoomImage {
+        width: 100px;
+        height: 0;
+        padding-bottom: 100px;
+        overflow: hidden;
+        border-radius: 20%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+
+    .zoomImage_header {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 20%;
+    }
+
+    .header_img {
+        width: 40px;
+        height: 40px;
+        background: url({{ user.socialaccount_set.all.0.get_avatar_url }}) center;
+        background-size: cover;
+        border-radius: 20%;
+    }
+
+    .header_img_social {
+        width: 40px;
+        height: 40px;
+        background: url({{ user.socialaccount_set.all.0.get_avatar_url }}) center;
+        background-size: cover;
+        border-radius: 20%;
+    }
+
+    .display-flex {
+        display: flex;
+    }
+
+    .div-size {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+    }
+
+    .div-size_1 {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+        justify-content: center; /*子元素水平居中*/
+        align-items: center; /*子元素垂直居中*/
+        display: -webkit-flex;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load my_filters_and_tags %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+首页
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 定义放置文章标题的div容器 -->
+<div class="container videosamplex">
+    <video id="my_video">
+        <source src="/media/video/Coward Hero.mp4"></source>
+    </video>
+
+    <script type="text/javascript">
+        var videoObject = {
+            container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class
+            variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+            poster: '',
+            drag: 'start',
+            mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏
+            mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放
+            h5container: '#videoplayer',//h5环境中使用自定义容器
+            video: '/media/video/Coward Hero.mp4'//视频地址
+        };
+        var player = new ckplayer(videoObject);
+    </script>
+
+    <!--    <script type="text/javascript">-->
+    <!--        var myPlayer = videojs('my_video', {-->
+    <!--            muted: true,-->
+    <!--            controls: true,-->
+    <!--            height: 300,-->
+    <!--            width: 650,-->
+    <!--            loop: true,-->
+    <!--            preload: 'auto',-->
+    <!--            controlBar: { // 设置控制条组件-->
+    <!--                /* 设置控制条里面组件的相关属性及显示与否-->
+    <!--                'currentTimeDisplay':true,-->
+    <!--                'timeDivider':true,-->
+    <!--                'durationDisplay':true,-->
+    <!--                'remainingTimeDisplay':false,-->
+    <!--                volumePanel: {-->
+    <!--                  inline: false,-->
+    <!--                }-->
+    <!--                */-->
+    <!--                /* 使用children的形式可以控制每一个控件的位置，以及显示与否 */-->
+    <!--                children: [-->
+    <!--                    {name: 'playToggle'}, // 播放按钮-->
+    <!--                    {name: 'currentTimeDisplay'}, // 当前已播放时间-->
+    <!--                    {name: 'progressControl'}, // 播放进度条-->
+    <!--                    {name: 'durationDisplay'}, // 总时间-->
+    <!--                    { // 倍数播放-->
+    <!--                        name: 'playbackRateMenuButton',-->
+    <!--                        'playbackRates': [0.5, 1, 1.5, 2, 2.5]-->
+    <!--                    },-->
+    <!--                    {-->
+    <!--                        name: 'volumePanel', // 音量控制-->
+    <!--                        inline: false, // 不使用水平方式-->
+    <!--                    },-->
+    <!--                    {name: 'FullscreenToggle'} // 全屏-->
+    <!--                ]-->
+    <!--            },-->
+    <!--            // 更多配置.....-->
+    <!--        }, function () {-->
+    <!--            console.log('视频可以播放了', this);-->
+    <!--        });-->
+
+    <!--        // let player = videojs('my_video');-->
+    <!--        const SeekBar = videojs.getComponent('SeekBar');-->
+
+    <!--        SeekBar.prototype.getPercent = function getPercent() {-->
+    <!--            const time = myPlayer.currentTime()-->
+    <!--            const percent = time / myPlayer.duration()-->
+    <!--            return percent >= 1 ? 1 : percent-->
+    <!--        }-->
+
+    <!--        SeekBar.prototype.handleMouseMove = function handleMouseMove(event) {-->
+    <!--            let newTime = this.calculateDistance(event) * myPlayer.duration()-->
+    <!--            if (newTime === myPlayer.duration()) {-->
+    <!--                newTime = newTime - 0.1-->
+    <!--            }-->
+    <!--            myPlayer.currentTime(newTime);-->
+    <!--            this.update();-->
+    <!--            let currentTime = myPlayer.currentTime();-->
+    <!--            let minutes = Math.floor(currentTime / 60);-->
+    <!--            let seconds = Math.floor(currentTime - minutes * 60)-->
+    <!--            let x = minutes < 10 ? "0" + minutes : minutes;-->
+    <!--            let y = seconds < 10 ? "0" + seconds : seconds;-->
+    <!--            let format = x + ":" + y;-->
+    <!--            myPlayer.controlBar.currentTimeDisplay.el_.innerHTML = format;-->
+    <!--        }-->
+    <!--    </script>-->
+</div>
+
+{% endblock content %}

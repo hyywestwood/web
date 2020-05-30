@@ -1,0 +1,50 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load my_filters_and_tags %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+视频
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<!--<video id="media" src="" width="640" height="480" controls autoplay="true">您的浏览器不支持 video 标签</video>-->
+<div class="container">
+    <video id="my_video" src="" style="width: 100%" controls autoplay="true">
+        您的浏览器不支持 video 标签
+    </video>
+
+<!--    <script type="text/javascript">-->
+<!--        var videoObject = {-->
+<!--            container: '.videosamplex',//“#”代表容器的ID，“.”或“”代表容器的class-->
+<!--            variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象-->
+<!--            poster: '',-->
+<!--            drag: 'start',-->
+<!--            mobileCkControls: true,//是否在移动端（包括ios）环境中显示控制栏-->
+<!--            mobileAutoFull: false,//在移动端播放后是否按系统设置的全屏播放-->
+<!--            h5container: '#videoplayer',//h5环境中使用自定义容器-->
+<!--            video: './test_resp/?path=media/video/Coward Hero.mp4'//视频地址-->
+<!--        };-->
+<!--        var player = new ckplayer(videoObject);-->
+<!--    </script>-->
+    <br/><br/><br/><br/>
+    <button>Coward Hero.mp4</button>
+    <button>test1_2.mp4</button>
+    <button>DestFile.mp4</button>
+    <button>mkv_video.mkv</button>
+    <button>test_yys.mp4</button>
+    <button>sudu.mp4</button>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                let test = $(this).text();
+                $("#my_video").attr('src', './test_resp/?path=media/video/' + test);
+            });
+        })
+    </script>
+</div>
+
+
+{% endblock content %}
