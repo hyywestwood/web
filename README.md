@@ -245,20 +245,6 @@
 
 **43** - [读者常见问题](https://github.com/stacklens/django_blog_tutorial/blob/master/md/43.读者常见问题.md)
 
-## 教程快照
-**代码片段：**
-![](http://blog.dusaiphoto.com/github-quickview-3.jpg)
-
----
-
-**博客首页片段：**
-![](http://blog.dusaiphoto.com/github-quickview-2.png)
-
----
-
-**博客详情页片段：**
-![](http://blog.dusaiphoto.com/github-quickview-1.jpg)
-
 ## 代码使用说明
 确认你的电脑已经正确安装 Python 3.4 以上的版本。
 
@@ -309,12 +295,4 @@ master版本管理员账号：dusai  密码：adminpassword
 python manage.py createsuperuser
 ```
 
-即可重新创建管理员账号。
-
-## 联系方式
-- 简单问题，请在[杜赛的个人网站](https://www.dusaiphoto.com)留言
-- 复杂问题，请Email私信我：dusaiphoto@foxmail.com
-
-**一个人的学习是孤单的。欢迎扫码 Django交流QQ群、博主微信，寻找学伴一起进步吧！**
-
-![](https://www.dusaiphoto.com/static/img/QR.jpg)
+即可重新创建管理
